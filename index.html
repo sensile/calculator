@@ -2,114 +2,20 @@
 <html>
 
 <head>
-    <title>sklzy shitty calculator</title>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/smoothness/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
-    <style>
-        #calculator {
-            width: 300px;
-            margin: 50px auto;
-            border: 1px solid #ccc;
-            padding: 20px;
-        }
-
-        .button {
-            width: 50px;
-            height: 50px;
-            font-size: 20px;
-            margin: 5px;
-        }
-
-        .operator {
-            background-color: #f0ad4e;
-        }
-    </style>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
 </head>
 
 <body>
-    <div id="calculator">
-        <input type="text" id="num1" placeholder="Enter Number" class="ui-widget-content">
-        <br>
-        <button class="button operator" id="add">+</button>
-        <button class="button operator" id="subtract">-</button>
-        <button class="button operator" id="multiply">*</button>
-        <button class="button operator" id="divide">/</button>
-        <button class="button" id="equals">=</button>
-        <button class="button" id="clear">C</button>
-        <br>
-        <p id="result" class="ui-widget-content"></p>
+    <div class="container">
+        <h1 class="title">Weather</h1>
+        <div class="form-container">
+            <input type="text" id="location" placeholder="Enter location">
+            <button onclick="getWeather()">Get Weather</button>
+        </div>
+        <div id="weather"></div>
     </div>
-
-    <script>
-        $(document).ready(function () {
-            let num1 = 0;
-            let num2 = 0;
-            let operator = "";
-
-            function calculate() {
-                if (operator === "+") {
-                    return num1 + num2;
-                } else if (operator === "-") {
-                    return num1 - num2;
-                } else if (operator === "*") {
-                    return num1 * num2;
-                } else if (operator === "/") {
-                    return num1 / num2;
-                }
-            }
-
-            function clear() {
-                num1 = 0;
-                num2 = 0;
-                operator = "";
-                $("#num1").val("");
-                $("#result").html("");
-            }
-
-            $("#num1").focus();
-
-            $("#add").click(function (event) {
-                event.preventDefault();
-                num1 = parseFloat($("#num1").val());
-                operator = "+";
-                $("#num1").val("");
-            });
-
-            $("#subtract").click(function (event) {
-                event.preventDefault();
-                num1 = parseFloat($("#num1").val());
-                operator = "-";
-                $("#num1").val("");
-            });
-
-            $("#multiply").click(function (event) {
-                event.preventDefault();
-                num1 = parseFloat($("#num1").val());
-                operator = "*";
-                $("#num1").val("");
-            });
-
-            $("#divide").click(function (event) {
-                event.preventDefault();
-                num1 = parseFloat($("#num1").val());
-                operator = "/";
-                $("#num1").val("");
-            });
-
-            $("#equals").click(function (event) {
-                event.preventDefault();
-                num2 = parseFloat($("#num1").val());
-                let result = calculate();
-                $("#result").html("Result: " + result);
-            });
-
-            $("#clear").click(function (event) {
-                event.preventDefault();
-                clear();
-            });
-        });
-    </script>
 </body>
 
 </html>
